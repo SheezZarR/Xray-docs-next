@@ -130,21 +130,21 @@ chmod +r ~/xray_cert/xray.key
         chmod +x ~/xray_cert/xray-cert-renew.sh
         ```
 
-    5.  Run `crontab -e` and add an automatic task [Automatically run `xray-cert-renew.sh` once a month] (Note that you should not add `sudo`, because we are adding an automatic task for the `vpsadmin`
+    5. Run `crontab -e` and add an automatic task [Automatically run `xray-cert-renew.sh` once a month] (Note that you should not add `sudo`, because we are adding an automatic task for the `vpsadmin`
         account. When you run it for the first time, you will be asked to choose an editor. Of course, choose the familiar `nano`!)
 
             ```shell
             crontab -e
             ```
 
-    6.  Add the following content to the end of the file, save and exit.
+    6. Add the following content to the end of the file, save and exit.
 
         ```
         # 1:00am, 1st day each month, run `xray-cert-renew.sh`
         0 1 1 * * bash /home/vpsadmin/xray_cert/xray-cert-renew.sh
         ```
 
-    7.  The complete process is demonstrated as follows:
+    7. The complete process is demonstrated as follows:
 
         ![Automatically install certificates for Xray every month](./ch07-img03-crontab-cert-renew.gif)
 
@@ -451,7 +451,7 @@ folder and create your own configuration file in this folder, such as `/etc/sysc
 :::
 
 11. Add the following content
-
+0s
 ```
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
