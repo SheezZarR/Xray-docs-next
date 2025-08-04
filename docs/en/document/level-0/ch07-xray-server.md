@@ -424,15 +424,16 @@ deb http://deb.debian.org/debian buster-backports main
 
 9. Refresh the software library and query the latest version of the official Debian kernel and install it. Please be sure to install the version corresponding to your VPS (this article takes the more common [amd64] as an example).
 
-  ```shell
-  sudo apt update && sudo apt -t buster-backports install linux-image-amd64
-  ```
+```shell
+sudo apt update && sudo apt -t buster-backports install linux-image-amd64
+```
 
 ::: warning Note
 
 If your VPS supports it, you can try the [cloud server dedicated kernel] `linux-image-cloud-amd64`. The advantages are simplicity and low resource usage. The disadvantage is that some students have reported that forced installation on an unsupported system will cause the system to fail to boot (the kernel cannot be recognized).
 
 To avoid the tragedy of being unable to identify, please make sure:
+
 - Take a system snapshot before trying, or
 - You have `vnc` to save the day (and you know how to use it)
 
@@ -451,7 +452,7 @@ folder and create your own configuration file in this folder, such as `/etc/sysc
 :::
 
 11. Add the following content
-0s
+
 ```
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
@@ -459,9 +460,9 @@ net.ipv4.tcp_congestion_control=bbr
 
 12. Restart the VPS to make the kernel update and `BBR` settings take effect
 
-  ```shell
-  sudo reboot
-  ```
+```shell
+sudo reboot
+```
 
 13. The complete process is demonstrated as follows:
 
@@ -476,21 +477,25 @@ If you are not sure whether your VPS supports it, please follow the command in s
 14. Confirm that `BBR` is enabled
 
 If you want to confirm whether `BBR` is enabled correctly, you can use the following command:
+
 ```shell
 lsmod | grep bbr
 ```
 
 This should return the following result:
+
 ```
 tcp_bbr
 ```
 
 If you want to confirm whether the `fq` algorithm is enabled correctly, you can use the following command:
+
 ```shell
 lsmod | grep fq
 ```
 
 This should return the following result:
+
 ```
 sch_fq
 ```
